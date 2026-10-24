@@ -6,6 +6,12 @@
     throw new Error("Portfolio content is unavailable. Check portfolio.config.js.");
   }
 
+  const setPageWidth = () => {
+    document.documentElement.style.setProperty("--page-width", `${document.documentElement.clientWidth}px`);
+  };
+  setPageWidth();
+  window.addEventListener("resize", setPageWidth, { passive: true });
+
   const floatingSymbols = [...document.querySelectorAll(".ambient-floats span")];
   const brace = floatingSymbols.find((symbol) => symbol.classList.contains("ambient-one"));
   const java = floatingSymbols.find((symbol) => symbol.classList.contains("ambient-five"));
@@ -30,12 +36,78 @@
     symbol.style.setProperty("--fall-drift", `${Math.round(Math.random() * 72 - 36)}px`);
   });
 
+  const companion = document.querySelector(".cursor-companion");
+  if (companion && window.matchMedia("(pointer: fine)").matches) {
+    let gazeFrame = 0;
+    document.addEventListener("pointermove", (event) => {
+      if (event.pointerType === "touch" || gazeFrame) return;
+      gazeFrame = window.requestAnimationFrame(() => {
+        gazeFrame = 0;
+        const bounds = companion.getBoundingClientRect();
+        const centerX = bounds.left + bounds.width / 2;
+        const centerY = bounds.top + bounds.height * 0.43;
+        const directionX = event.clientX - centerX;
+        const directionY = event.clientY - centerY;
+        const angle = Math.atan2(directionY, directionX);
+        const distance = Math.min(Math.hypot(directionX, directionY) / 90, 1);
+        companion.style.setProperty("--gaze-x", `${(Math.cos(angle) * distance * 2.4).toFixed(2)}px`);
+        companion.style.setProperty("--gaze-y", `${(Math.sin(angle) * distance * 2.4).toFixed(2)}px`);
+        companion.style.setProperty("--head-turn", `${(Math.max(-1, Math.min(1, directionX / 180)) * 8).toFixed(2)}deg`);
+        companion.style.setProperty("--head-tilt-y", `${(Math.max(-1, Math.min(1, directionY / 180)) * 2).toFixed(2)}px`);
+      });
+    }, { passive: true });
+    document.addEventListener("pointerleave", () => {
+      companion.style.setProperty("--gaze-x", "0px");
+      companion.style.setProperty("--gaze-y", "0px");
+      companion.style.setProperty("--head-turn", "0deg");
+      companion.style.setProperty("--head-tilt-y", "0px");
+    });
+  }
+
   const element = (tag, className, text) => {
     const node = document.createElement(tag);
     if (className) node.className = className;
     if (text !== undefined) node.textContent = text;
     return node;
   };
+
+  const animalBySection = ["dog", "rabbit", "fox", "bird", "turtle", "butterfly", "panda", "deer"];
+  const animalTracks = [];
+  document.querySelectorAll("main > section").forEach((section, index) => {
+    const track = element("div", "section-runner");
+    track.setAttribute("aria-hidden", "true");
+    track.append(element("span", "section-runner-line"));
+
+    const animal = animalBySection[index];
+    const animalIcons = {
+      dog: "🐕",
+      rabbit: "🐇",
+      fox: "🦊",
+      bird: "🐦",
+      turtle: "🐢",
+      butterfly: "🦋",
+      panda: "🐼",
+      deer: "🦌"
+    };
+    const runner = element("span", `section-runner-animal animal-${animal}`);
+    runner.style.setProperty("--animal-duration", `${20 + Math.random() * 6}s`);
+    const artwork = element("span", "animal-art", animalIcons[animal]);
+    runner.append(artwork);
+    track.append(runner);
+    section.append(track);
+    animalTracks.push(track);
+  });
+
+  if ("IntersectionObserver" in window) {
+    const animalObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle("is-visible", entry.isIntersecting);
+      });
+    }, { threshold: 0.1 });
+    animalTracks.forEach((track) => animalObserver.observe(track));
+  } else {
+    animalTracks.forEach((track) => track.classList.add("is-visible"));
+  }
 
   document.querySelectorAll("[data-name]").forEach((node) => {
     node.textContent = config.name;
@@ -48,14 +120,11 @@
   });
   document.querySelector("[data-summary]").textContent = config.summary;
   document.querySelector("[data-goal]").textContent = config.careerGoal;
-  document.querySelector("[data-contact-email]").textContent = config.email;
-  document.querySelector("[data-email-cta]").href = `mailto:${config.email}`;
   document.querySelector("#current-year").textContent = new Date().getFullYear();
 
   const socials = [
     { label: "GitHub", url: config.github, icon: "GH" },
-    { label: "LinkedIn", url: config.linkedin, icon: "in" },
-    { label: "Email", url: `mailto:${config.email}`, icon: "@" }
+    { label: "LinkedIn", url: config.linkedin, icon: "in" }
   ];
 
   document.querySelectorAll(".social-links").forEach((container) => {
@@ -63,10 +132,8 @@
       if (social.url) {
         const link = element("a", "social-link", social.label);
         link.href = social.url;
-        if (!social.url.startsWith("mailto:")) {
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
-        }
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
         const icon = element("span", "social-icon", social.icon);
         icon.setAttribute("aria-hidden", "true");
         link.prepend(icon);
