@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#090b10">
+    <meta name="description" content="Portfolio of Saimani Veerabathini, a Java backend software engineer in Hyderabad, India.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Saimani Veerabathini — Java Backend Developer">
+    <meta property="og:description" content="Building reliable, scalable backend systems. Explore my experience, skills, and professional projects.">
+    <title>Saimani Veerabathini — Java Backend Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="portfolio.config.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <a class="brand" href="#home" aria-label="Saimani Veerabathini, home"><span class="brand-mark">S</span><span data-name-short>Saimani</span><span class="brand-period">.</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation">
+          <span></span><span></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a class="nav-contact" href="#contact">Contact <span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero section container" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span> JAVA BACKEND DEVELOPER <span class="eyebrow-divider">/</span> <span data-location>Hyderabad, India</span></p>
+          <div class="profile-intro">
+            <img class="profile-photo" src="assets/Saimani.jpeg" alt="Saimani Veerabathini">
+            <p class="profile-name">Saimani Veerabathini<span>Software Engineer</span></p>
+          </div>
+          <h1>Building Reliable,<br>Scalable <span class="gradient-text">Backend Systems.</span></h1>
+          <p class="hero-intro">Java Backend Developer passionate about building robust APIs, designing efficient databases, and developing reliable software solutions.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↘</span></a>
+            <a class="button button-secondary" href="assets/Saimani_Veerabathini_Professional_Resume.pdf" download="Saimani_Veerabathini_Professional_Resume.pdf">Download Resume <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="social-links" id="hero-socials" aria-label="Social and contact links"></div>
+        </div>
+        <div class="hero-visual" aria-label="Illustration of a backend API request and response" role="img">
+          <div class="visual-glow"></div>
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="terminal">
+            <div class="terminal-top"><div class="window-dots"><i></i><i></i><i></i></div><span>api-service.java</span><span class="terminal-live">● LIVE</span></div>
+            <div class="terminal-code" aria-hidden="true">
+              <p><span class="line-no">01</span> <span class="code-purple">@RestController</span></p>
+              <p><span class="line-no">02</span> <span class="code-purple">@RequestMapping</span><span class="code-muted">(</span><span class="code-green">"/api/v1"</span><span class="code-muted">)</span></p>
+              <p><span class="line-no">03</span> <span class="code-blue">public class</span> <span class="code-yellow">ApiController</span> <span class="code-muted">{</span></p>
+              <p><span class="line-no">04</span> &nbsp;&nbsp;<span class="code-purple">@GetMapping</span><span class="code-muted">(</span><span class="code-green">"/health"</span><span class="code-muted">)</span></p>
+              <p><span class="line-no">05</span> &nbsp;&nbsp;<span class="code-blue">public</span> ResponseEntity <span class="code-yellow">health</span><span class="code-muted">() {</span></p>
+              <p><span class="line-no">06</span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">return</span> ResponseEntity.<span class="code-yellow">ok</span><span class="code-muted">();</span></p>
+              <p><span class="line-no">07</span> &nbsp;&nbsp;<span class="code-muted">}</span></p>
+              <p><span class="line-no">08</span> <span class="code-muted">}</span><span class="cursor"></span></p>
+            </div>
+            <div class="terminal-response"><span class="response-dot"></span><span>200 OK</span><span class="response-route">GET /api/v1/health</span><span class="response-time">12ms</span></div>
+          </div>
+          <div class="floating-chip chip-spring"><span class="chip-icon">✳</span> Spring Boot</div>
+          <div class="floating-chip chip-java"><span class="java-cup">♨</span> Java</div>
+          <div class="visual-caption"><span class="caption-line"></span> From API design to production</div>
+        </div>
+        <a class="scroll-cue" href="#about"><span class="scroll-mouse"></span> SCROLL TO EXPLORE</a>
+      </section>
+
+      <section class="section about-section" id="about">
+        <div class="container section-grid">
+          <div class="section-heading">
+            <p class="eyebrow">01 <span class="eyebrow-divider">/</span> A LITTLE ABOUT ME</p>
+            <h2>Thoughtful code.<br><span class="muted-heading">Reliable systems.</span></h2>
+          </div>
+          <div class="about-content">
+            <p class="about-summary" data-summary></p>
+            <p class="about-lead" data-about></p>
+            <p class="about-goal" data-goal></p>
+            <div class="about-facts">
+              <div class="fact"><span class="fact-number">02</span><span>Professional<br>project environments</span></div>
+              <div class="fact"><span class="fact-number">Java</span><span>Core backend<br>language</span></div>
+              <div class="fact"><span class="fact-number">API</span><span>Services &<br>integrations</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section skills-section container" id="skills">
+        <div class="section-heading section-heading-center">
+          <p class="eyebrow">02 <span class="eyebrow-divider">/</span> TECHNICAL TOOLKIT</p>
+          <h2>Tools I work with<span class="gradient-text">.</span></h2>
+          <p class="section-subtitle">Technologies and practices from my professional experience.</p>
+        </div>
+        <div class="skills-grid" id="skills-grid"></div>
+      </section>
+
+      <section class="section experience-section" id="experience">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">03 <span class="eyebrow-divider">/</span> CAREER PATH</p>
+            <h2>Experience that<br><span class="muted-heading">makes an impact.</span></h2>
+          </div>
+          <div class="timeline" id="experience-list"></div>
+        </div>
+      </section>
+
+      <section class="section projects-section container" id="projects">
+        <div class="section-heading projects-heading">
+          <div>
+            <p class="eyebrow">04 <span class="eyebrow-divider">/</span> SELECTED WORK</p>
+            <h2>Professional projects<span class="gradient-text">.</span></h2>
+          </div>
+          <p class="section-subtitle">Project experience from my roles. No sample projects or unverified repository links.</p>
+        </div>
+        <div class="projects-grid" id="projects-grid"></div>
+      </section>
+
+      <section class="section architecture-section">
+        <div class="container architecture-layout">
+          <div class="section-heading">
+            <p class="eyebrow">05 <span class="eyebrow-divider">/</span> BACKEND THINKING</p>
+            <h2>Built in layers.<br><span class="muted-heading">Made to last.</span></h2>
+            <p class="section-subtitle">A common service structure—not a claim that every layer appears in each project.</p>
+          </div>
+          <div class="architecture-diagram" aria-label="Conceptual backend architecture diagram">
+            <div class="arch-client"><span class="arch-symbol">↗</span><span>Client / API consumer</span></div>
+            <div class="arch-connector"><i></i></div>
+            <div class="arch-layer"><span class="arch-index">01</span><div><strong>Controller</strong><small>HTTP · REST endpoints</small></div><span class="arch-symbol">⌘</span></div>
+            <div class="arch-connector"><i></i></div>
+            <div class="arch-layer arch-layer-accent"><span class="arch-index">02</span><div><strong>Service</strong><small>Business logic · validation</small></div><span class="arch-symbol">◇</span></div>
+            <div class="arch-connector"><i></i></div>
+            <div class="arch-layer"><span class="arch-index">03</span><div><strong>Repository</strong><small>Persistence · data access</small></div><span class="arch-symbol">▤</span></div>
+            <div class="arch-connector"><i></i></div>
+            <div class="arch-database"><span class="db-icon">▤</span><span>Relational database</span><small>MySQL · Oracle</small></div>
+            <div class="arch-footnote"><span class="status-dot"></span> Testing · exception handling · maintainability</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section education-section container" id="education">
+        <div class="section-heading">
+          <p class="eyebrow">06 <span class="eyebrow-divider">/</span> EDUCATION</p>
+          <h2>Where it started<span class="gradient-text">.</span></h2>
+        </div>
+        <div class="education-card" id="education-card"></div>
+      </section>
+
+      <section class="section contact-section" id="contact">
+        <div class="container contact-inner">
+          <p class="eyebrow">LET’S CONNECT</p>
+          <h2>Have a backend challenge<br>in mind<span class="gradient-text">?</span></h2>
+          <p class="contact-copy">I’m always glad to connect about backend engineering, APIs, and building dependable software.</p>
+          <a class="button button-primary contact-button" data-email-cta href="mailto:veerabathinisaimani2624@gmail.com">Get in touch <span aria-hidden="true">↗</span></a>
+          <div class="contact-meta"><span data-contact-email></span><span class="meta-divider"></span><span data-location></span></div>
+          <div class="social-links contact-socials" id="contact-socials" aria-label="Social and contact links"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="brand" href="#home"><span class="brand-mark">S</span><span data-name-short>Saimani</span><span class="brand-period">.</span></a>
+        <p>Designed & built with care<span class="gradient-text">.</span></p>
+        <span>© <span id="current-year"></span> <span data-name>Saimani Veerabathini</span></span>
+      </div>
+    </footer>
+  </body>
+</html>
