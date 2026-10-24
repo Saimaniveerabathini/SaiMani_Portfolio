@@ -6,6 +6,30 @@
     throw new Error("Portfolio content is unavailable. Check portfolio.config.js.");
   }
 
+  const floatingSymbols = [...document.querySelectorAll(".ambient-floats span")];
+  const brace = floatingSymbols.find((symbol) => symbol.classList.contains("ambient-one"));
+  const java = floatingSymbols.find((symbol) => symbol.classList.contains("ambient-five"));
+  const movingSymbols = floatingSymbols.filter((symbol) => symbol !== brace && symbol !== java);
+  const lanes = movingSymbols.map((_, index) => ((index + 1.5) / floatingSymbols.length) * 100);
+  const fallLanes = new Map();
+  if (brace) fallLanes.set(brace, 6.25);
+  if (java) fallLanes.set(java, 93.75);
+  for (let index = lanes.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [lanes[index], lanes[swapIndex]] = [lanes[swapIndex], lanes[index]];
+  }
+  movingSymbols.forEach((symbol, index) => {
+    fallLanes.set(symbol, lanes[index]);
+  });
+  floatingSymbols.forEach((symbol) => {
+    const duration = 18 + Math.random() * 14;
+    symbol.style.setProperty("--fall-lane", `${fallLanes.get(symbol)}%`);
+    symbol.style.setProperty("--start-y", `${-5 - Math.random() * 30}vh`);
+    symbol.style.setProperty("--fall-duration", `${duration}s`);
+    symbol.style.setProperty("--fall-delay", `${-Math.random() * duration}s`);
+    symbol.style.setProperty("--fall-drift", `${Math.round(Math.random() * 72 - 36)}px`);
+  });
+
   const element = (tag, className, text) => {
     const node = document.createElement(tag);
     if (className) node.className = className;
@@ -23,7 +47,6 @@
     node.textContent = config.location;
   });
   document.querySelector("[data-summary]").textContent = config.summary;
-  document.querySelector("[data-about]").textContent = config.about;
   document.querySelector("[data-goal]").textContent = config.careerGoal;
   document.querySelector("[data-contact-email]").textContent = config.email;
   document.querySelector("[data-email-cta]").href = `mailto:${config.email}`;

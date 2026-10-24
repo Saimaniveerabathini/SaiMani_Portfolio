@@ -1,6 +1,6 @@
 # SaiMani Veerabathini — Portfolio
 
-A responsive, dark-themed Java backend developer portfolio built with plain HTML, CSS, and JavaScript. It has no build step, framework, API key, or server requirement and can be hosted on GitHub Pages.
+A responsive, dark-themed Full Stack Java Developer portfolio built with plain HTML, CSS, and JavaScript. It has no build step, framework, API key, or server requirement and can be hosted on GitHub Pages.
 
 ## Project structure
 
@@ -25,7 +25,7 @@ Open `index.html` in a browser. For a local HTTP preview, run `python -m http.se
 Update the single content file, [`portfolio.config.js`](./portfolio.config.js), to change your name, summary, contact details, social profiles, skills, experience, education, and project descriptions. The current content reflects the information supplied for this portfolio; review it for accuracy before publishing.
 
 - The supplied profile photo is `assets/Saimani.jpeg`; the resume button downloads `assets/Saimani_Veerabathini_Professional_Resume.pdf`.
-- Add your real GitHub and LinkedIn profile URLs in the config. Until supplied, the page shows a non-clickable reminder rather than a fake link.
+- GitHub and LinkedIn links are configured in `portfolio.config.js`.
 - Add repository or demo URLs only for projects you can publicly share. The supplied work experience is presented as professional project experience, not as public sample repositories.
 - Remove or edit skills and project details you do not want to claim.
 - Replace the page title, description, and social preview defaults in `index.html` if desired.
